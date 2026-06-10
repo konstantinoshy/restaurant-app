@@ -1,9 +1,27 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+const path = require('path');
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+const menuRoutes = require('./routes/menu');
+const orderRoutes = require('./routes/orders');
+const reservationRoutes = require('./routes/reservations');
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api/menu', menuRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/reservations', reservationRoutes);
+
+app.use((req, res) => {
+    res.status(404).json({ error: 'Not found' });
+});
+
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
 });
 
 app.listen(port, () => {
