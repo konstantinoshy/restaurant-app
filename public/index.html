@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tavola — Restaurant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>La Tavola</h1>
+        <p class="tagline">Authentic Italian Kitchen</p>
+        <nav>
+            <a href="#menu">Menu</a>
+            <a href="#order">Your Order</a>
+            <a href="#reservations">Reservations</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="menu">
+            <h2>Menu</h2>
+            <div class="filters" id="category-filters">
+                <button class="filter-btn active" data-category="">All</button>
+                <button class="filter-btn" data-category="starters">Starters</button>
+                <button class="filter-btn" data-category="mains">Mains</button>
+                <button class="filter-btn" data-category="desserts">Desserts</button>
+                <button class="filter-btn" data-category="drinks">Drinks</button>
+            </div>
+            <div class="menu-grid" id="menu-grid"></div>
+        </section>
+
+        <section id="order">
+            <h2>Your Order</h2>
+            <div id="cart-items"><p class="empty-note">Your cart is empty. Add something from the menu!</p></div>
+            <div class="cart-footer">
+                <span id="cart-total"></span>
+            </div>
+            <form id="order-form" hidden>
+                <input type="text" id="order-name" placeholder="Your name" required>
+                <button type="submit" class="primary">Place Order</button>
+            </form>
+            <p id="order-message" class="message" hidden></p>
+        </section>
+
+        <section id="reservations">
+            <h2>Book a Table</h2>
+            <form id="reservation-form">
+                <input type="text" id="res-name" placeholder="Your name" required>
+                <input type="email" id="res-email" placeholder="Email" required>
+                <div class="form-row">
+                    <input type="date" id="res-date" required>
+                    <input type="time" id="res-time" min="11:00" max="22:59" required>
+                    <input type="number" id="res-party" placeholder="Guests" min="1" max="20" required>
+                </div>
+                <button type="submit" class="primary">Reserve</button>
+            </form>
+            <p id="reservation-message" class="message" hidden></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>La Tavola &middot; Open daily 11:00&ndash;23:00 &middot; 12 Via Roma</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
